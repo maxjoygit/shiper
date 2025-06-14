@@ -32,15 +32,15 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get("/nodeapp", (req, res) => res.json({ error: false, data: "home!" }));
+app.get("/", (req, res) => res.json({ error: false, data: "home!" }));
 
-app.get("/nodeapp/api", (req, res) => res.json({ error: false, data: "Api home!" }));
+app.get("/api", (req, res) => res.json({ error: false, data: "Api home!" }));
 
-app.get("/nodeapp/api/v1", (req, res) => res.json({ error: false, data: "Api v1 home!" }));
+app.get("/api/v1", (req, res) => res.json({ error: false, data: "Api v1 home!" }));
 
-app.use('/nodeapp/api/v1/', apiRouter);
+app.use('/api/v1/', apiRouter);
 
-app.all("/nodeapp/*", (req, res) => res.json({ error: true, status: 404, data: "Api route not found!" }));
+app.all("*", (req, res) => res.json({ error: true, status: 404, data: "Api route not found!" }));
 
 app.listen(PORT, () => { console.log(`Server is running at http://localhost:${PORT}`); });
 
